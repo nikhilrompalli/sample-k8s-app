@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqldb
+  labels:
+    app: sqldb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqldb
+  template:
+    metadata:
+      labels:
+        app: sqldb
+    spec:
+      containers:
+      - name: mysql
+        image: hshar/mysql:5.5
+        ports: 
+        - containerPort: 3306
